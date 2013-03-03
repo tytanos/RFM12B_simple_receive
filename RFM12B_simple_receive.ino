@@ -8,7 +8,7 @@ Payload pomiar;
 
 void setup () {
     Serial.begin(57600);
-    Serial.println("\n[Sensnode Demo]");
+    Serial.println("\n[Simple test receive]");
     rf12_initialize('R', RF12_433MHZ, 210);
      // rf12_control(0xC688); // bitrate =4.789kbps
      rf12_control(0xC691); //bitrate 2.395kbps
@@ -22,10 +22,10 @@ void setup () {
 void loop () {
     if (rf12_recvDone() && rf12_crc == 0 && rf12_len == sizeof pomiar) {
         memcpy(&pomiar, (byte*) rf12_data, sizeof pomiar);
-        Serial.print("WS ");
+        Serial.print("REC ");
         Serial.print("LP");
         Serial.print(pomiar.lp);
-        Serial.print(" T");
+        Serial.print(" B");
         Serial.print(pomiar.bat);
         Serial.println();
     }
