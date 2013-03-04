@@ -1,7 +1,7 @@
 #include <JeeLib.h>
 
 typedef struct {
-	int lp;
+	int lp; // long dla skanera
 	int bat;
 } Payload;
 Payload pomiar;
@@ -11,6 +11,7 @@ void setup () {
     Serial.println("\n[Simple test receive]");
     rf12_initialize('R', RF12_433MHZ, 210);
      // rf12_control(0xC688); // bitrate =4.789kbps
+     rf12_control(0xA753); // Frequency =434.6875MHz // mało zaszumiona częstotliwość
      rf12_control(0xC691); //bitrate 2.395kbps
      rf12_control(0x9820); // deviation 45kHz
      rf12_control(0x96C1); //BW 67kHz
